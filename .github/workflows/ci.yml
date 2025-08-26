@@ -15,18 +15,10 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - name: Install Kotlin
-        run: |
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install kotlin
-          echo 'source "$HOME/.sdkman/bin/sdkman-init.sh"' >> $GITHUB_ENV
+      - name: Install Kotlin compiler
+        run: sudo apt-get update && sudo apt-get install -y kotlin
       - name: Compile
-        shell: bash
-        run: |
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          find src -name "*.kt" > sources.txt
-          kotlinc @sources.txt -include-runtime -d app.jar
+        run: kotlinc src -include-runtime -d app.jar
       - name: Run
         run: java -jar app.jar
       - uses: actions/upload-artifact@v4
