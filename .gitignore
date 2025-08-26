@@ -1,0 +1,14 @@
+# IntelliJ
+.idea/
+*.iml
+out/
+# OS
+.DS_Store
+Thumbs.db
+# Kotlin/Java
+*.class
+*.jar
+*.war
+*.ear
+# Logs
+*.log
